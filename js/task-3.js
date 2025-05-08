@@ -1,92 +1,49 @@
 'use strict';
 
-// Напиши стрілочну функцію sortByDescendingFriendCount(users) , яка прийматиме один параметр users — масив об’єктів користувачів.
-// Функція має повертати масив усіх користувачів, відсортованих за спаданням кількостій їх друзів (властивість friends).
-// Оголошена змінна sortByDescendingFriendCount
-// Змінній sortByDescendingFriendCount присвоєна стрілочна функція з параметром (users)
-// Для перебирання параметра users використаний метод toSorted()
-// Виклик функції із зазначеним масивом users повертає новий масив користувачів, відсортований за спаданням кількості їхніх друзів
-// Виклик функції з випадковими, але валідними аргументами повертає правильне значення
-/////////////////////////
+// Напиши клас StringBuilder, який приймає один параметр initialValue — довільний рядок, який записується у приватну властивість value об'єкта, що створюється.
 
-const sortByDescendingFriendCount = users => {
-  return users.toSorted((a, b) => b.friends.length - a.friends.length);
-};
+// Оголоси наступні методи класу:
 
-/////////////////////
-console.log(
-  sortByDescendingFriendCount([
-    {
-      name: 'Moore Hensley',
-      friends: ['Sharron Pace'],
-      gender: 'male',
-    },
-    {
-      name: 'Sharlene Bush',
-      friends: ['Briana Decker', 'Sharron Pace'],
-      gender: 'female',
-    },
-    {
-      name: 'Ross Vazquez',
-      friends: ['Marilyn Mcintosh', 'Padilla Garrison', 'Naomi Buckner'],
-      gender: 'male',
-    },
-    {
-      name: 'Elma Head',
-      friends: ['Goldie Gentry', 'Aisha Tran'],
-      gender: 'female',
-    },
-    {
-      name: 'Carey Barr',
-      friends: ['Jordan Sampson', 'Eddie Strong'],
-      gender: 'male',
-    },
-    {
-      name: 'Blackburn Dotson',
-      friends: ['Jacklyn Lucas', 'Linda Chapman'],
-      gender: 'male',
-    },
-    {
-      name: 'Sheree Anthony',
-      friends: ['Goldie Gentry', 'Briana Decker'],
-      gender: 'female',
-    },
-  ])
-);
-// [
-//   {
-//     name: "Ross Vazquez",
-//     friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
-//     gender: "male"
-//   },
-//   {
-//     name: "Sharlene Bush",
-//     friends: ["Briana Decker", "Sharron Pace"],
-//     gender: "female"
-//   },
-//   {
-//     name: "Elma Head",
-//     friends: ["Goldie Gentry", "Aisha Tran"],
-//     gender: "female"
-//   },
-//   {
-//     name: "Carey Barr",
-//     friends: ["Jordan Sampson", "Eddie Strong"],
-//     gender: "male"
-//   },
-//   {
-//     name: "Blackburn Dotson",
-//     friends: ["Jacklyn Lucas", "Linda Chapman"],
-//     gender: "male"
-//   },
-//   {
-//     name: "Sheree Anthony",
-//     friends: ["Goldie Gentry", "Briana Decker"],
-//     gender: "female"
-//   },
-//   {
-//     name: "Moore Hensley",
-//     friends: ["Sharron Pace"],
-//     gender: "male"
-//   }
-// ]
+// getValue() — повертає поточне значення приватної властивості value.
+// padEnd(str) — отримує параметр str (рядок) і додає його в кінець значення приватної властивості value об'єкта, який викликає цей метод.
+// padStart(str) — отримує параметр str (рядок) і додає його на початок значення приватної властивості value об'єкта, який викликає цей метод.
+// padBoth(str) — отримує параметр str (рядок) і додає його на початок і в кінець значення приватної властивості value об'єкта, який викликає цей метод.
+
+class StringBuilder {
+  #value;
+  constructor(initialValue) {
+    this.#value = initialValue;
+  }
+
+  getValue() {
+    return this.#value;
+  }
+  padStart(str) {
+    //console.log(this.#value.padStart(this.#value.length + 1, str));
+
+    return (this.#value = this.#value.padStart(this.#value.length + 1, str));
+  }
+  padEnd(str) {
+    //console.log(this.#value.padEnd(this.#value.length + 1, str));
+    return (this.#value = this.#value.padEnd(this.#value.length + 1, str));
+  }
+
+  padBoth(str) {
+    //обидва одночасно
+    // console.log(this.#value); //  ^.^ - ++++++++!!!
+    // console.log(str + this.#value + str);
+    //console.log(typeof this.#value);
+
+    return (this.#value = str + this.#value + str);
+  }
+}
+
+const builder = new StringBuilder('.');
+
+console.log(builder.getValue()); // "."
+builder.padStart('^');
+console.log(builder.getValue()); // "^."
+builder.padEnd('^');
+console.log(builder.getValue()); // "^.^"
+builder.padBoth('=');
+console.log(builder.getValue()); // "=^.^="
