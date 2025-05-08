@@ -1,0 +1,43 @@
+h1 {
+    font-size: 35px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+p {
+    font-size: 20px;
+}
+
+h1,
+h2,
+p {
+    text-align: center;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    object-fit: cover;
+    transition: transform 4s linear;
+}
+
+img:hover,
+img:focus {
+    transform: scale(2);
+
+}
+
+
+.container {
+    padding: 16px;
+    margin: 0 auto;
+}
+
+.container-img {
+    max-width: 1000px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 50% 20% / 10% 40%;
+}
