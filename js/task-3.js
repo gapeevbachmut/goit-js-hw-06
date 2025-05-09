@@ -20,12 +20,13 @@ class StringBuilder {
   }
   padStart(str) {
     //console.log(this.#value.padStart(this.#value.length + 1, str));
-
-    return (this.#value = this.#value.padStart(this.#value.length + 1, str));
+    //return (this.#value = this.#value.padStart(this.#value.length + 1, str));
+    return (this.#value = str + this.#value);
   }
   padEnd(str) {
     //console.log(this.#value.padEnd(this.#value.length + 1, str));
-    return (this.#value = this.#value.padEnd(this.#value.length + 1, str));
+    //return (this.#value = this.#value.padEnd(this.#value.length + 1, str));
+    return (this.#value = this.#value + str);
   }
 
   padBoth(str) {
